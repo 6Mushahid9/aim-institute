@@ -2,6 +2,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { FaFireExtinguisher, FaGraduationCap, FaEye } from "react-icons/fa";
+import Gallery from "../components/gallery";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const coursesData = [
@@ -43,31 +45,31 @@ const Home = () => {
     {
       name: "English Speaking",
       description:
-        "Enhance your communication skills with spoken English lessons, ideal for both beginners and professionals.",
+        "Enhance your communication skills with structured spoken English lessons. This course covers grammar essentials, vocabulary building, pronunciation practice, group discussions, and role-plays to boost fluency and confidence in both personal and professional settings.",
       image: "/english.jpeg",
     },
     {
       name: "Computer Basic Knowledge",
       description:
-        "Learn essential computer operations, MS Office, internet usage, and digital literacy skills.",
+        "Learn essential computer operations, including MS Office (Word, Excel, PowerPoint), file management, internet browsing, email handling, and digital literacy. Perfect for beginners who want to become confident in using computers for study, work, or daily tasks.",
       image: "/comp.jpeg",
     },
     {
       name: "Interview Preparation",
       description:
-        "Master the art of presenting yourself confidently in interviews with mock sessions and expert tips.",
+        "Master the art of presenting yourself confidently in interviews with practical training. This course includes mock interview sessions, body language coaching, resume-building tips, and strategies to answer tough questions effectively, helping you succeed in any job interview.",
       image: "/interview.png",
     },
     {
       name: "Communication Development",
       description:
-        "Build strong verbal and written communication skills necessary for academic and professional success.",
+        "Build strong verbal and written communication skills necessary for academic and professional success. The course focuses on public speaking, business communication, email etiquette, active listening, and teamwork skills, empowering you to express ideas clearly and persuasively.",
       image: "/Communication.jpeg",
     },
     {
       name: "CPR & First Aid",
       description:
-        "Practical training in emergency response, including cardiopulmonary resuscitation, wound care, and managing medical emergencies.",
+        "Get practical, hands-on training in emergency response, including cardiopulmonary resuscitation (CPR), wound care, bleeding control, choking response, and handling common medical emergencies. This course equips you with life-saving skills that can make a difference in critical situations.",
       image: "/cprAid.png",
     },
   ];
@@ -75,7 +77,6 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-
       {/* Intro */}
       <section className="w-full bg-white py-20 relative overflow-hidden">
         {/* Optional Gradient Background Blob */}
@@ -93,12 +94,18 @@ const Home = () => {
             WELCOME TO
           </h2>
           <p className="text-xl md:text-2xl font-extrabold text-center text-green-700 mb-10">
-            AIM INSTITUTE 
-            <br className="block md:hidden"/> OF SAFETY & HEALTH
+            AIM INSTITUTE
+            <br className="block md:hidden" /> OF SAFETY & HEALTH
             <br className="block md:hidden" />
-            <span className="text-green-800 underline underline-offset-4 ml-0 md:ml-3">
-              +91 93355 21687
-            </span>
+            <a
+              href="https://wa.me/919335521687"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="text-green-800 underline underline-offset-4 ml-0 md:ml-3">
+                +91 93355 21687
+              </span>
+            </a>
           </p>
 
           <p className="text-justify text-lg text-gray-700 leading-relaxed mb-8">
@@ -134,7 +141,11 @@ const Home = () => {
             We offer comprehensive safety education and placement support at a
             nominal cost, ensuring quality training is accessible to everyone.
           </p>
-            <img src="/hero.jpg" alt="hero" className="md:hidden w-full rounded-sm mt-5 mb-[-70px]"/>
+          <img
+            src="/hero.jpg"
+            alt="hero"
+            className="md:hidden w-full rounded-sm mt-5 mb-[-70px]"
+          />
         </motion.div>
       </section>
 
@@ -263,31 +274,35 @@ const Home = () => {
           </p>
         </div>
         {/* Cards */}
-        <div className="space-y-8 max-w-[90%] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {coursesData.map((course, index) => (
             <div
               key={index}
-              className="flex flex-col sm:flex-row justify-between gap-6 p-6 bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition duration-300"
+              className="p-6 bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition duration-300 flex flex-col justify-between"
             >
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-green-700 mb-2">
+              {/* Course Info */}
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-green-700 mb-2">
                   {course.name}
                 </h3>
-                <p className="text-gray-600 text-base mb-3">
+                <p className="text-gray-600 text-sm sm:text-base mb-3 leading-relaxed">
                   {course.description}
                 </p>
-                <div className="flex flex-col sm:flex-row sm:items-center text-sm text-gray-700 gap-2">
-                  {course.fees && (
-                    <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-medium w-max">
-                      Only At : {course.fees}
-                    </span>
-                  )}
-                </div>
+                {course.fees && (
+                  <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-medium text-sm">
+                    Only At : {course.fees}
+                  </span>
+                )}
               </div>
-              <div className="flex-shrink-0 self-start sm:self-center">
-                <button className="mt-4 sm:mt-0 px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition">
+
+              {/* Enroll Button */}
+              <div className="mt-4">
+                <Link
+                  to="/contact"
+                  className="w-full px-5 py-2 sm:py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition text-sm sm:text-base"
+                >
                   Enroll Now !
-                </button>
+                </Link>
               </div>
             </div>
           ))}
@@ -347,6 +362,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <div className="h-0.5 max-w-[80%] bg-gray-500 mx-auto rounded-2xl mt-10"></div>
+      <Gallery />
 
       <div className="w-full md:px-72 border-t">
         <img src="/hse.jpg" alt="HSE" />

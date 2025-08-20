@@ -1,4 +1,5 @@
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useRef } from "react";
 
 const gallery = () => {
       const images = [

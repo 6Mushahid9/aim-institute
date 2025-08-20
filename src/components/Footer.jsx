@@ -25,7 +25,7 @@ const Footer = () => {
           <h3 className="text-xl font-semibold text-green-500 mb-4">Contact Info</h3>
           <ul className="space-y-2 text-gray-300">
             <li>
-              <strong>Location:</strong> MDS tower kursi road in front of integral university, gate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; no 1 Lucknow 226026
+              <strong>Location:</strong> MDS tower kursi road in front of integral university, gate no 1 Lucknow 226026
             </li>
             <li>
               <strong>Email:</strong> aiminstitute687@gmail.com
