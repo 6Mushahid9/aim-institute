@@ -4,75 +4,23 @@ import { motion } from "framer-motion";
 import { FaFireExtinguisher, FaGraduationCap, FaEye } from "react-icons/fa";
 import Gallery from "../components/gallery";
 import { Link } from "react-router-dom";
+import { coursesData, eLearningCourses } from "../data/coursesData";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const staggerParent = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
 
 const Home = () => {
-  const coursesData = [
-    {
-      name: "Diploma",
-      description:
-        "Comprehensive foundation in occupational health and safety, covering key principles, legislation, and risk assessment practices.",
-    },
-    {
-      name: "Advance Diploma",
-      description:
-        "In-depth training on safety management systems, industrial hygiene, environmental safety, and advanced risk mitigation techniques.",
-    },
-    {
-      name: "B.Sc",
-      description:
-        "Academic program focused on scientific approaches to occupational safety, environmental health, and industrial risk analysis.",
-    },
-    {
-      name: "Nebosh IGC",
-      description:
-        "Globally recognized certification providing essential knowledge in workplace safety, hazard control, and international compliance standards.",
-    },
-    {
-      name: "IOSH",
-      description:
-        "Entry-level course aimed at promoting awareness of health and safety practices for managers and supervisors in any industry.",
-      fees: "₹7,999",
-    },
-    {
-      name: "OSHA",
-      description:
-        "U.S.-based certification emphasizing workplace safety regulations, hazard recognition, and employee rights under OSHA standards.",
-      fees: "₹10,999",
-    },
-  ];
-
-  const eLearningCourses = [
-    {
-      name: "English Speaking",
-      description:
-        "Enhance your communication skills with structured spoken English lessons. This course covers grammar essentials, vocabulary building, pronunciation practice, group discussions, and role-plays to boost fluency and confidence in both personal and professional settings.",
-      image: "/english.jpeg",
-    },
-    {
-      name: "Computer Basic Knowledge",
-      description:
-        "Learn essential computer operations, including MS Office (Word, Excel, PowerPoint), file management, internet browsing, email handling, and digital literacy. Perfect for beginners who want to become confident in using computers for study, work, or daily tasks.",
-      image: "/comp.jpeg",
-    },
-    {
-      name: "Interview Preparation",
-      description:
-        "Master the art of presenting yourself confidently in interviews with practical training. This course includes mock interview sessions, body language coaching, resume-building tips, and strategies to answer tough questions effectively, helping you succeed in any job interview.",
-      image: "/interview.png",
-    },
-    {
-      name: "Communication Development",
-      description:
-        "Build strong verbal and written communication skills necessary for academic and professional success. The course focuses on public speaking, business communication, email etiquette, active listening, and teamwork skills, empowering you to express ideas clearly and persuasively.",
-      image: "/Communication.jpeg",
-    },
-    {
-      name: "CPR & First Aid",
-      description:
-        "Get practical, hands-on training in emergency response, including cardiopulmonary resuscitation (CPR), wound care, bleeding control, choking response, and handling common medical emergencies. This course equips you with life-saving skills that can make a difference in critical situations.",
-      image: "/cprAid.png",
-    },
-  ];
 
   return (
     <div>
@@ -149,9 +97,9 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* main */}
+      {/* hero */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 bg-gradient-to-r from-blue-50 via-white to-blue-50 font-sans p-4">
-        {/* Left Images - visible on medium+ */}
+        {/* Left Images */}
         <div className="space-y-4 hidden md:block">
           <img
             src="/three.jpeg"
@@ -165,11 +113,7 @@ const Home = () => {
           />
         </div>
 
-        {/* Main content */}
         <div className="md:col-span-3 space-y-12 order-2 md:order-none">
-          <div className="h-1 w-[80%] bg-gradient-to-r from-blue-400 to-blue-600 mx-auto rounded-full" />
-
-          {/* ABOUT */}
           <section className="bg-white rounded-xl shadow-xl p-6 md:p-10 text-justify">
             <div className="text-center mb-6">
               <FaGraduationCap className="text-3xl md:text-4xl text-blue-600 mx-auto mb-2" />
@@ -192,9 +136,6 @@ const Home = () => {
             </p>
           </section>
 
-          <div className="h-1 w-[80%] bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto rounded-full" />
-
-          {/* MISSION */}
           <section className="bg-white rounded-xl shadow-xl p-6 md:p-10 text-center">
             <FaFireExtinguisher className="text-3xl md:text-4xl text-red-600 mx-auto mb-2" />
             <h2 className="text-2xl md:text-4xl font-extrabold text-red-900 tracking-wide mb-4">
@@ -206,9 +147,6 @@ const Home = () => {
             </p>
           </section>
 
-          <div className="h-1 w-[80%] bg-gradient-to-r from-purple-400 to-purple-600 mx-auto rounded-full" />
-
-          {/* VISION */}
           <section className="bg-white rounded-xl shadow-xl p-6 md:p-10 text-center">
             <FaEye className="text-3xl md:text-4xl text-purple-600 mx-auto mb-2" />
             <h2 className="text-2xl md:text-4xl font-extrabold text-purple-900 tracking-wide mb-4">
@@ -221,7 +159,7 @@ const Home = () => {
           </section>
         </div>
 
-        {/* Right Images - visible on medium+ */}
+        {/* Right Images */}
         <div className="space-y-4 hidden md:block">
           <img
             src="/one.jpg"
@@ -236,7 +174,6 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="h-0.5 max-w-[80%] bg-gray-500 mx-auto rounded-2xl mt-10"></div>
       {/* image row*/}
       <section className="w-full py-16 bg-white">
         <h2 className="text-center text-3xl md:text-4xl font-bold text-black mb-10">
@@ -262,9 +199,14 @@ const Home = () => {
         </div>
       </section>
 
-      {/* courses */}
-      <section className="w-full mt-5 py-20 bg-green-800 rounded-t-2xl">
-        <div className="max-w-[80%] mx-auto text-center mb-14">
+      {/* PAID COURSES SECTION */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="w-full mt-5 py-20 bg-green-800 rounded-t-2xl"
+      >
+        <motion.div variants={fadeUp} className="max-w-[80%] mx-auto text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold text-white">
             Courses We <span className="text-amber-300">Provide</span>
           </h2>
@@ -272,21 +214,30 @@ const Home = () => {
             Our training programs empower individuals and teams with the
             knowledge to ensure safety in every situation.
           </p>
-        </div>
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {coursesData.map((course, index) => (
-            <div
-              key={index}
+        </motion.div>
+
+        {/* Course Cards */}
+        <motion.div
+          variants={staggerParent}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          {coursesData.slice(0, 3).map((course) => (
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 120 }}
+              key={course.id}
               className="p-6 bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition duration-300 flex flex-col justify-between"
             >
-              {/* Course Info */}
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-green-700 mb-2">
                   {course.name}
                 </h3>
                 <p className="text-gray-600 text-sm sm:text-base mb-3 leading-relaxed">
-                  {course.description}
+                  {course.shortDescription}
                 </p>
                 {course.fees && (
                   <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-medium text-sm">
@@ -295,78 +246,95 @@ const Home = () => {
                 )}
               </div>
 
-              {/* Enroll Button */}
-              <div className="mt-4">
+              <motion.div whileTap={{ scale: 0.95 }} className="mt-4">
                 <Link
-                  to="/contact"
+                  to={`/courses/${course.id}`}
                   className="w-full px-5 py-2 sm:py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition text-sm sm:text-base"
                 >
                   Enroll Now !
                 </Link>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
 
-      {/* Free courses */}
-      <section className="w-full bg-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-center text-3xl md:text-4xl font-bold text-black mb-12">
-            FREE - <span className="text-green-600">COURSES</span>
-          </h2>
-          <div className="space-y-10">
-            {eLearningCourses.map((course, index) => (
-              <div
-                key={index}
-                className="flex flex-col md:flex-row items-center gap-6 p-6 border rounded-2xl shadow-md hover:shadow-lg transition"
-              >
-                {/* Image */}
-                <div className="w-full md:w-1/3">
-                  <img
-                    src={course.image}
-                    alt={course.name}
-                    className="w-full h-52 object-cover rounded-xl"
-                  />
-                </div>
+        <motion.div whileInView={{ opacity: 1 }} initial={{ opacity: 0 }} className="text-center mt-10">
+          <motion.div whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/courses"
+              className="px-6 py-3 bg-white text-green-700 font-semibold rounded-lg shadow hover:bg-gray-100 transition"
+            >
+              View All Courses →
+            </Link>
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
-                {/* Content */}
-                <div className="w-full md:w-2/3 flex flex-col justify-between h-full">
-                  <div>
-                    <h3 className="text-2xl font-bold text-black mb-2">
-                      {course.name}
-                    </h3>
-                    <p className="text-gray-700 text-base">
-                      {course.description}
-                    </p>
-                  </div>
-                  <button className="mt-4 w-max px-5 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition">
+      {/* FREE COURSES SECTION */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="w-full py-16 bg-gradient-to-t from-green-100 to-green-4"
+      >
+        <motion.h2 variants={fadeUp} className="text-center text-3xl md:text-4xl font-bold text-black mb-12">
+          FREE - <span className="text-green-600">COURSES</span>
+        </motion.h2>
+
+        <div className="max-w-6xl mx-auto px-4 space-y-10">
+          {eLearningCourses.slice(0, 2).map((course) => (
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ scale: 1.02 }}
+              key={course.id}
+              className="flex flex-col md:flex-row items-center gap-6 p-6 border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} className="w-full md:w-1/3">
+                <img
+                  src={course.image}
+                  alt={course.name}
+                  className="w-full h-52 object-cover rounded-xl"
+                />
+              </motion.div>
+
+              <div className="w-full md:w-2/3">
+                <h3 className="text-2xl font-bold text-black mb-2">{course.name}</h3>
+                <p className="text-gray-700 text-base">{course.shortDescription}</p>
+
+                <motion.div whileTap={{ scale: 0.95 }}>
+                  <Link
+                    to={`/courses/${course.id}`}
+                    className="mt-4 inline-block px-5 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+                  >
                     Know More
-                  </button>
-                </div>
+                  </Link>
+                </motion.div>
               </div>
-            ))}
+            </motion.div>
+          ))}
 
-            <p className="text-base sm:text-lg md:text-xl font-medium text-green-700 bg-green-100 px-4 py-3 rounded-xl shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
-              <span className="text-lg sm:text-xl font-bold text-green-800">
-                🎯 JOB - Placement:
-              </span>
-              <span className="text-black">
-                We proudly offer{" "}
-                <span className="font-semibold">
-                  100% guaranteed job placement
-                </span>{" "}
-                to kickstart your career.
-              </span>
-            </p>
-          </div>
+          <motion.p
+            variants={fadeUp}
+            className="text-base sm:text-lg md:text-xl font-medium text-green-700 bg-green-100 px-4 py-3 rounded-xl shadow-sm"
+          >
+            🎯 <span className="font-bold text-green-800">JOB - Placement:</span>
+            We proudly offer <span className="font-semibold">100% guaranteed job placement</span>.
+          </motion.p>
+
+          <motion.div whileTap={{ scale: 0.95 }} className="text-center mt-10">
+            <Link
+              to="/courses"
+              className="px-6 py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition"
+            >
+              Explore All Free Courses →
+            </Link>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      <div className="h-0.5 max-w-[80%] bg-gray-500 mx-auto rounded-2xl mt-10"></div>
       <Gallery />
 
-      <div className="w-full md:px-72 border-t">
+      <div className="w-full md:px-72">
         <img src="/hse.jpg" alt="HSE" />
       </div>
 

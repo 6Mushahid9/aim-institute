@@ -32,6 +32,12 @@ const Navbar = () => {
             Home
           </Link>
           <Link
+            to="/courses"
+            className="relative text-white font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Courses
+          </Link>
+          <Link
             to="/contact"
             className="relative text-white font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
@@ -39,7 +45,7 @@ const Navbar = () => {
           </Link>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4 text-white text-xl">
+          {/* <div className="flex items-center gap-4 text-white text-xl">
             <a
               href="https://www.instagram.com/aim__institute0999?igsh=MTMwOWcyZmNjYmV0eg=="
               target="_blank"
@@ -73,7 +79,7 @@ const Navbar = () => {
                 size={32}
               />
             </a>
-          </div>
+          </div> */}
         </div>
 
         {/* Mobile Menu Button */}
@@ -89,6 +95,13 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-green-700 px-6 py-4 space-y-4">
           <Link
+            to="/courses"
+            onClick={() => setIsOpen(false)}
+            className="block w-full text-center px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200"
+          >
+            Courses
+          </Link>
+          <Link
             to="/contact"
             onClick={() => setIsOpen(false)}
             className="block w-full text-center px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200"
@@ -96,7 +109,7 @@ const Navbar = () => {
             Contact Us
           </Link>
 
-          <div className="flex justify-center gap-6 text-white text-2xl">
+          {/* <div className="flex justify-center gap-6 text-white text-2xl">
             <a
               href="https://www.instagram.com/aim__institute0999?igsh=MTMwOWcyZmNjYmV0eg=="
               target="_blank"
@@ -121,7 +134,7 @@ const Navbar = () => {
             >
               <FaYoutube className="hover:text-red-500 transition duration-200" />
             </a>
-          </div>
+          </div> */}
         </div>
       )}
     </nav>
