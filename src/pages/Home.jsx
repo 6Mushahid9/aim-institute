@@ -25,79 +25,109 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      {/* Intro */}
-      <section className="w-full bg-white py-20 relative overflow-hidden">
-        {/* Optional Gradient Background Blob */}
-        <div className="absolute -top-40 -left-40 w-[400px] h-[400px] bg-green-200 rounded-full blur-3xl opacity-30 z-0" />
-        <div className="absolute -bottom-20 -right-40 w-[300px] h-[300px] bg-yellow-100 rounded-full blur-3xl opacity-20 z-0" />
 
+      {/* 1 */}
+      <section className="relative w-full py-28 bg-gradient-to-br from-white via-green-50 to-green-100 overflow-hidden">
+        {/* Bold Geometric Semi Circle */}
+        <div className="absolute -top-20 -right-28 w-[420px] h-[420px] bg-pink-200 rounded-full opacity-25 blur-2xl" />
+
+        {/* Soft Blob */}
+        <div className="absolute -bottom-24 -left-24 w-[380px] h-[380px] bg-yellow-100 rounded-full opacity-30 blur-3xl" />
+
+        {/* Center Content */}
         <motion.div
-          className="max-w-[85%] sm:max-w-[75%] mx-auto relative z-10"
+          className="max-w-4xl mx-auto text-center px-6 relative z-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-center text-2xl md:text-5xl font-extrabold text-green-900 mb-2 md:mb-4 tracking-wide">
-            WELCOME TO
-          </h2>
-          <p className="text-xl md:text-2xl font-extrabold text-center text-green-700 mb-10">
-            AIM INSTITUTE
-            <br className="block md:hidden" /> OF SAFETY & HEALTH
-            <br className="block md:hidden" />
+
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="inline-block bg-green-100 text-green-800 px-5 py-1.5 rounded-full font-semibold text-sm md:text-base shadow-sm"
+          >
+            ISO Certified Safety Training Institute
+          </motion.div>
+
+          {/* Main Heading */}
+          <h1 className="mt-6 text-4xl md:text-6xl font-extrabold text-green-900 leading-tight">
+            Aim Institute of <span className="text-green-700">Safety & Health</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="mt-6 text-gray-700 text-lg max-w-2xl mx-auto leading-relaxed">
+            Providing internationally recognized safety education, hands-on practical
+            training, and 100% job placement to build tomorrow’s safety professionals.
+          </p>
+
+          {/* Buttons */}
+          <motion.div
+            className="mt-10 flex justify-center gap-4 flex-wrap"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+          >
+            <a
+              href="/courses"
+              className="px-7 py-3 bg-green-700 text-white rounded-xl shadow-md hover:bg-green-800 transition font-semibold"
+            >
+              Explore Courses
+            </a>
+
             <a
               href="https://wa.me/919335521687"
               target="_blank"
               rel="noopener noreferrer"
+              className="px-7 py-3 bg-white border border-green-700 text-green-700 rounded-xl shadow-sm hover:bg-green-50 transition font-semibold"
             >
-              <span className="text-green-800 underline underline-offset-4 ml-0 md:ml-3">
-                +91 93355 21687
-              </span>
+              Contact Us
             </a>
-          </p>
-
-          <p className="text-justify text-lg text-gray-700 leading-relaxed mb-8">
-            We are delighted to welcome you to{" "}
-            <span className="font-semibold text-green-900">
-              Aim Institute of Safety & Health
-            </span>
-            , a premier institute dedicated to shaping skilled and responsible
-            safety professionals. Our mission is to empower individuals and
-            organizations with{" "}
-            <span className="text-green-800 font-medium">
-              cutting-edge knowledge
-            </span>
-            ,
-            <span className="text-green-800 font-medium">
-              practical training
-            </span>
-            , and a deep understanding of workshop safety standards and
-            regulations. At{" "}
-            <span className="font-semibold text-green-900">AIOSH</span>, we
-            believe safety is not just a requirement –{" "}
-            <span className="italic">it’s a culture</span>.
-          </p>
-
-          <p className="text-justify text-lg text-gray-700 leading-relaxed mb-10">
-            With a team of certified experts, state-of-the-art facilities, and
-            internationally recognized programs, we ensure our students and
-            clients are equipped to meet the demands of today’s dynamic
-            industries.
-          </p>
-
-          <p className="font-bold text-green-900 text-xl text-center">
-            We offer comprehensive safety education and placement support at a
-            nominal cost, ensuring quality training is accessible to everyone.
-          </p>
-          <img
-            src="/hero.jpg"
-            alt="hero"
-            className="md:hidden w-full rounded-sm mt-5 mb-[-70px]"
-          />
+          </motion.div>
         </motion.div>
       </section>
 
-      {/* hero */}
+      {/* 2 */}
+      <section className="w-full bg-white py-20">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6 items-center">
+
+          <div>
+            <motion.h1
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-extrabold text-green-900 leading-tight"
+            >
+              Aim Institute of Safety & Health
+            </motion.h1>
+
+            <p className="mt-5 text-lg text-gray-700">
+              Transforming individuals into globally certified safety professionals with
+              industry-oriented training & guaranteed placement.
+            </p>
+
+            <a
+              href="/courses"
+              className="mt-8 inline-block px-7 py-3 bg-green-700 text-white rounded-xl hover:bg-green-800 transition font-semibold"
+            >
+              Explore Courses
+            </a>
+          </div>
+
+          <motion.img
+            src="/hero.jpg"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="rounded-2xl shadow-xl"
+          />
+        </div>
+      </section>
+
+      {/* intro */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 bg-gradient-to-r from-blue-50 via-white to-blue-50 font-sans p-4">
         {/* Left Images */}
         <div className="space-y-4 hidden md:block">
