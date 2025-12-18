@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Hero from "../components/Hero";
 import { motion } from "framer-motion";
 import { FaFireExtinguisher, FaGraduationCap, FaEye } from "react-icons/fa";
 import {
@@ -31,69 +32,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-
-      <section className="relative w-full py-28 bg-gradient-to-br from-white via-green-50 to-green-100 overflow-hidden">
-        {/* Bold Geometric Semi Circle */}
-        <div className="absolute -top-20 -right-28 w-[420px] h-[420px] bg-pink-200 rounded-full opacity-25 blur-2xl" />
-
-        {/* Soft Blob */}
-        <div className="absolute -bottom-24 -left-24 w-[380px] h-[380px] bg-yellow-100 rounded-full opacity-30 blur-3xl" />
-
-        {/* Center Content */}
-        <motion.div
-          className="max-w-4xl mx-auto text-center px-6 relative z-10"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewport={{ once: true }}
-        >
-
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-block bg-green-100 text-green-800 px-5 py-1.5 rounded-full font-semibold text-sm md:text-base shadow-sm"
-          >
-            ISO Certified Safety Training Institute
-          </motion.div>
-
-          {/* Main Heading */}
-          <h1 className="mt-6 text-4xl md:text-6xl font-extrabold text-green-900 leading-tight">
-            Aim Institute of <span className="text-green-700">Safety & Health</span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="mt-6 text-gray-700 text-lg max-w-2xl mx-auto leading-relaxed">
-            Providing internationally recognized safety education, hands-on practical
-            training, and 100% job placement to build tomorrow’s safety professionals.
-          </p>
-
-          {/* Buttons */}
-          <motion.div
-            className="mt-10 flex justify-center gap-4 flex-wrap"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.7 }}
-          >
-            <a
-              href="/courses"
-              className="px-7 py-3 bg-green-700 text-white rounded-xl shadow-md hover:bg-green-800 transition font-semibold"
-            >
-              Explore Courses
-            </a>
-
-            <a
-              href="https://wa.me/919335521687"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3 bg-white border border-green-700 text-green-700 rounded-xl shadow-sm hover:bg-green-50 transition font-semibold"
-            >
-              Contact Us
-            </a>
-          </motion.div>
-        </motion.div>
-      </section>
+      <Hero />
 
       {/* intro */}
       <section className="w-full py-20 bg-gradient-to-r from-green-50 via-white to-green-50 overflow-hidden">

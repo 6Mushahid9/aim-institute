@@ -32,12 +32,17 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* TOP INFO BAR */}
-      <div className="w-full bg-gradient-to-r from-green-900 to-green-700 text-white text-sm">
-        <div className="max-w-[85%] mx-auto flex justify-between items-center py-2">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <FaPhoneAlt className="text-xs" />
-              <span className="font-medium">+91 93355 21687</span>
+
+      <div className="w-full bg-gradient-to-r from-green-900 to-green-700 text-white text-xs">
+        <div className="max-w-[85%] mx-auto flex justify-between items-center py-1.5">
+
+          {/* LEFT: PHONE + WHATSAPP */}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5">
+              <FaPhoneAlt className="text-[10px]" />
+              <span className="font-medium">
+                +91 93355 21687
+              </span>
             </div>
 
             {/* WhatsApp CTA */}
@@ -45,27 +50,28 @@ const Navbar = () => {
               href="https://wa.me/919335521687"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-green-600 px-3 py-1 rounded-full text-xs font-semibold hover:bg-green-500 transition"
+              className="flex items-center gap-1.5 bg-green-600 px-2.5 py-0.5 rounded-full font-semibold hover:bg-green-500 transition"
             >
-              <FaWhatsapp />
+              <FaWhatsapp className="text-[11px]" />
               WhatsApp
             </a>
           </div>
 
-          {/* Social Icons */}
-          <div className="flex items-center gap-4 text-lg">
+          {/* RIGHT: SOCIAL ICONS */}
+          <div className="flex items-center gap-3 text-base">
             <RiInstagramFill className="hover:text-pink-300 transition cursor-pointer" />
             <FaFacebook className="hover:text-blue-300 transition cursor-pointer" />
             <FaYoutube className="hover:text-red-300 transition cursor-pointer" />
           </div>
+
         </div>
       </div>
 
+
       {/* MAIN NAVBAR */}
       <nav
-        className={`w-full bg-white transition-shadow ${
-          scrolled ? "shadow-lg" : "shadow-sm"
-        }`}
+        className={`w-full bg-white transition-shadow ${scrolled ? "shadow-lg" : "shadow-sm"
+          }`}
       >
         <div className="max-w-[85%] mx-auto px-4 py-4 flex items-center justify-between">
           {/* Logo */}
@@ -139,11 +145,10 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`block text-center py-2 rounded-md font-semibold ${
-                  location.pathname === link.path
+                className={`block text-center py-2 rounded-md font-semibold ${location.pathname === link.path
                     ? "bg-green-700 text-white"
                     : "text-green-800 hover:bg-green-100"
-                }`}
+                  }`}
               >
                 {link.name}
               </Link>
