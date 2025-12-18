@@ -8,7 +8,7 @@ export const coursesData = [
       "This Diploma in Occupational Health & Safety provides a strong foundation for beginners and working professionals. The program covers workplace hazards, risk assessment methods, safety laws, accident investigation, and preventive measures. It prepares students for job-ready safety roles in industries, construction, oil & gas, logistics, and manufacturing.",
     duration: "6 Months",
     eligibility: "10th / 12th Pass or Any Degree",
-    fees: "₹14,999",
+    fees: "₹35,000",
     syllabus: [
       "Introduction to Occupational Health & Safety",
       "Types of Workplace Hazards",
@@ -38,7 +38,7 @@ export const coursesData = [
       "The Advanced Diploma in Industrial Safety is designed for individuals seeking leadership roles in the safety domain. This course deep-dives into industrial safety engineering, environmental safety, emergency planning, HAZMAT handling, and advanced risk control systems.",
     duration: "1 Year",
     eligibility: "Diploma / ITI / Graduate",
-    fees: "₹19,999",
+    fees: "₹45,000",
     syllabus: [
       "Advanced Industrial Safety Management",
       "Construction Site Safety",
@@ -68,6 +68,7 @@ export const coursesData = [
       "The B.Sc in Fire & Safety is a comprehensive academic degree focusing on fire technology, industrial safety, disaster management, and environmental protection. Students gain hands-on skills through practical training, live drills, and industrial exposure.",
     duration: "3 Years",
     eligibility: "12th Pass (Science Preferred)",
+    fees: "₹95,000",
     syllabus: [
       "Fire Technology & Operations",
       "Industrial Hazards & Controls",
@@ -96,7 +97,7 @@ export const coursesData = [
       "NEBOSH IGC is one of the world’s most respected safety certifications. It equips candidates with international health & safety standards, risk management practices, and professional HSE skills required for global job opportunities.",
     duration: "25–30 Days",
     eligibility: "Any Working Professional / Graduate",
-    fees: "₹45,000 – ₹55,000 (Varies by Batch)",
+    fees: "₹55,000",
     syllabus: [
       "IG1: Management of Health & Safety",
       "IG2: Risk Assessment",
@@ -123,7 +124,7 @@ export const coursesData = [
       "IOSH Managing Safely is an excellent foundational course for managers, supervisors, and beginners in the safety profession. It focuses on risk assessment, control measures, and implementing safety responsibilities.",
     duration: "3–4 Days",
     eligibility: "Any Student or Professional",
-    fees: "₹7,999",
+    fees: "₹12,000",
     syllabus: [
       "Assessing Risks",
       "Controlling Risks",
@@ -149,7 +150,7 @@ export const coursesData = [
       "The OSHA course focuses on U.S. labor safety standards, hazard identification, worker rights, and safe workplace practices. It is ideal for individuals seeking overseas opportunities.",
     duration: "30 Hours / 10 Hours",
     eligibility: "Any Student or Professional",
-    fees: "₹10,999",
+    fees: "₹15,000",
     syllabus: [
       "OSHA Act & General Duty Clause",
       "Electrical & Fire Safety",

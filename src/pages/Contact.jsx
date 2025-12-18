@@ -20,16 +20,18 @@ function Contact() {
     e.preventDefault();
 
     const { name, email, phone, message } = form;
-    if (!name.trim() || !email.trim() || !phone.trim() || !message.trim()) {
-      alert("Please fill out all fields.");
+    if (!name || !email || !phone || !message) {
+      alert("Please fill all fields");
       return;
     }
 
     const whatsapp = "919335521687";
     const text = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
-    const url = `https://wa.me/${whatsapp}?text=${encodeURIComponent(text)}`;
+    window.open(
+      `https://wa.me/${whatsapp}?text=${encodeURIComponent(text)}`,
+      "_blank"
+    );
 
-    window.open(url, "_blank");
     setForm({ name: "", email: "", phone: "", message: "" });
   };
 
@@ -37,78 +39,89 @@ function Contact() {
     <>
       <Navbar />
 
-      <div className="max-w-3xl mx-auto p-6 my-10 bg-green-50 rounded-xl shadow-md">
-        <h1 className="text-3xl font-semibold text-green-800">Contact Us</h1>
+      <section className="bg-gradient-to-b from-green-50 via-white to-green-100 py-20">
+        <div className="max-w-7xl mx-auto px-4 space-y-20">
 
-        <div className="bg-green-600 text-white p-8 rounded-xl shadow-md text-center my-10">
-      <MessageCircle size={40} className="mx-auto mb-4" />
-      <h2 className="text-2xl font-semibold">We’re here to help!</h2>
-      <p className="mt-2 text-green-50">
-        Reach out to us anytime — we respond within minutes on WhatsApp.
-      </p>
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-green-800">
+              Contact Us
+            </h1>
+            <p className="mt-4 text-gray-600">
+              We’re here to help you with admissions, courses, and guidance.
+            </p>
+          </div>
+
+          <ContactInfo />
+
+          {/* FORM + SIDE STATS */}
+          {/* FORM */}
+<div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-6 md:p-10">
+  <h2 className="text-2xl md:text-3xl font-bold text-green-800 mb-2">
+    Send Us a Message
+  </h2>
+  <p className="text-gray-600 mb-8">
+    Have questions? Fill out the form and we’ll connect with you on WhatsApp.
+  </p>
+
+  <form onSubmit={handleSubmit} className="space-y-6">
+
+    {/* Name + Email */}
+    <div className="grid md:grid-cols-2 gap-5">
+      <input
+        name="name"
+        value={form.name}
+        onChange={handleChange}
+        placeholder="Your Name"
+        className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+        required
+      />
+
+      <input
+        name="email"
+        type="email"
+        value={form.email}
+        onChange={handleChange}
+        placeholder="Email Address"
+        className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+        required
+      />
     </div>
-        <ContactInfo />
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-green-700 mb-1">Name</label>
-            <input
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              type="text"
-              className="w-full border border-green-200 rounded px-4 py-2"
-              placeholder="Your Name"
-            />
-          </div>
+    {/* Phone */}
+    <input
+      name="phone"
+      value={form.phone}
+      onChange={handleChange}
+      placeholder="WhatsApp Number"
+      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+      required
+    />
 
-          <div>
-            <label className="block text-green-700 mb-1">Email</label>
-            <input
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              type="email"
-              className="w-full border border-green-200 rounded px-4 py-2"
-              placeholder="you@example.com"
-            />
-          </div>
+    {/* Message */}
+    <textarea
+      name="message"
+      value={form.message}
+      onChange={handleChange}
+      rows="4"
+      placeholder="Your Message"
+      className="w-full border border-gray-300 rounded-lg px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-green-500"
+      required
+    />
 
-          <div>
-            <label className="block text-green-700 mb-1">WhatsApp Number</label>
-            <input
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              type="text"
-              className="w-full border border-green-200 rounded px-4 py-2"
-              placeholder="+91 XXXXXXXXXX"
-            />
-          </div>
+    {/* Submit Button */}
+    <button
+      type="submit"
+      className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition"
+    >
+      Connect on WhatsApp
+    </button>
+  </form>
+</div>
 
-          <div>
-            <label className="block text-green-700 mb-1">Message</label>
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              rows="4"
-              className="w-full border border-green-200 rounded px-4 py-2"
-              placeholder="Your message..."
-            />
-          </div>
 
-          <button
-            type="submit"
-            className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded"
-          >
-            Connect
-          </button>
-        </form>
-
-        <ContactMap />
-      </div>
+          <ContactMap />
+        </div>
+      </section>
 
       <Footer />
     </>

@@ -2,6 +2,12 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { FaFireExtinguisher, FaGraduationCap, FaEye } from "react-icons/fa";
+import {
+  FaShieldAlt,
+  FaGlobeAsia,
+  FaUserTie,
+  FaBolt,
+} from "react-icons/fa";
 import Gallery from "../components/gallery";
 import { Link } from "react-router-dom";
 import { coursesData, eLearningCourses } from "../data/coursesData";
@@ -26,7 +32,6 @@ const Home = () => {
     <div>
       <Navbar />
 
-      {/* 1 */}
       <section className="relative w-full py-28 bg-gradient-to-br from-white via-green-50 to-green-100 overflow-hidden">
         {/* Bold Geometric Semi Circle */}
         <div className="absolute -top-20 -right-28 w-[420px] h-[420px] bg-pink-200 rounded-full opacity-25 blur-2xl" />
@@ -90,122 +95,120 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* 2 */}
-      <section className="w-full bg-white py-20">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6 items-center">
+      {/* intro */}
+      <section className="w-full py-20 bg-gradient-to-r from-green-50 via-white to-green-50 overflow-hidden">
+        <div className="max-w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
 
-          <div>
-            <motion.h1
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-extrabold text-green-900 leading-tight"
-            >
-              Aim Institute of Safety & Health
-            </motion.h1>
+          {/* LEFT CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="space-y-8"
+          >
+            {/* Heading */}
+            <div>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-green-900 leading-tight">
+                Shaping Safety <br />
+                <span className="text-green-700">Professionals for Tomorrow</span>
+              </h2>
+              <div className="mt-3 h-1 w-24 bg-amber-400 rounded-full" />
+            </div>
 
-            <p className="mt-5 text-lg text-gray-700">
-              Transforming individuals into globally certified safety professionals with
-              industry-oriented training & guaranteed placement.
+            {/* Description */}
+            <p className="text-gray-700 text-lg leading-relaxed max-w-xl">
+              <span className="font-semibold text-green-900">
+                Aim Institute of Safety & Health
+              </span>{" "}
+              is a premier training institute dedicated to building skilled,
+              certified, and industry-ready safety professionals. Our programs blend
+              global standards with practical, hands-on learning.
             </p>
 
-            <a
-              href="/courses"
-              className="mt-8 inline-block px-7 py-3 bg-green-700 text-white rounded-xl hover:bg-green-800 transition font-semibold"
-            >
-              Explore Courses
-            </a>
-          </div>
+            {/* Feature Badges */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4">
+              {[
+                {
+                  icon: <FaUserTie />,
+                  title: "Expert Faculty",
+                  text: "Industry certified trainers",
+                },
+                {
+                  icon: <FaGlobeAsia />,
+                  title: "Global Recognition",
+                  text: "International certifications",
+                },
+                {
+                  icon: <FaShieldAlt />,
+                  title: "Enterprise Safety",
+                  text: "Real-world risk training",
+                },
+                {
+                  icon: <FaBolt />,
+                  title: "Fast Placement",
+                  text: "Career-focused programs",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-start gap-4 bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition"
+                >
+                  <div className="text-green-700 text-2xl">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-green-900">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-gray-600">
+                      {item.text}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-          <motion.img
-            src="/hero.jpg"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="rounded-2xl shadow-xl"
-          />
+          {/* RIGHT IMAGE GRID */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="grid grid-cols-2 gap-6"
+          >
+            <motion.img
+              whileHover={{ scale: 1.05 }}
+              src="/one.jpg"
+              alt="Training"
+              className="rounded-2xl shadow-lg object-cover h-56 w-full"
+            />
+
+            <motion.img
+              whileHover={{ scale: 1.05 }}
+              src="/three.jpeg"
+              alt="Workshop"
+              className="rounded-2xl shadow-lg object-cover h-56 w-full"
+            />
+
+            <motion.img
+              whileHover={{ scale: 1.05 }}
+              src="/four.jpeg"
+              alt="Safety Practice"
+              className="rounded-2xl shadow-lg object-cover h-56 w-full col-span-2"
+            />
+          </motion.div>
         </div>
       </section>
 
-      {/* intro */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 bg-gradient-to-r from-blue-50 via-white to-blue-50 font-sans p-4">
-        {/* Left Images */}
-        <div className="space-y-4 hidden md:block">
-          <img
-            src="/three.jpeg"
-            alt="Left 1"
-            className="w-full rounded-2xl shadow-md hover:scale-105 transition-transform"
-          />
-          <img
-            src="/four.jpeg"
-            alt="Left 2"
-            className="w-full rounded-2xl shadow-md hover:scale-105 transition-transform"
-          />
-        </div>
-
-        <div className="md:col-span-3 space-y-12 order-2 md:order-none">
-          <section className="bg-white rounded-xl shadow-xl p-6 md:p-10 text-justify">
-            <div className="text-center mb-6">
-              <FaGraduationCap className="text-3xl md:text-4xl text-blue-600 mx-auto mb-2" />
-              <h2 className="text-2xl md:text-4xl font-extrabold text-blue-900 tracking-wide">
-                ABOUT
-              </h2>
-            </div>
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              Aim Institute of Safety & Health is a leading institute dedicated
-              to training and developing skilled safety professionals for
-              industries worldwide. Established with a vision to promote a
-              culture of safety, we offer internationally recognized courses in
-              occupational health and safety, industrial safety, fire safety,
-              and environmental management. Our institute is backed by
-              experienced faculty, modern training infrastructure, and a strong
-              commitment to practical, hands-on learning. We prepare our
-              students not just for certifications, but for real-world
-              challenges in various sectors including construction, oil & gas,
-              manufacturing, and logistics.
-            </p>
-          </section>
-
-          <section className="bg-white rounded-xl shadow-xl p-6 md:p-10 text-center">
-            <FaFireExtinguisher className="text-3xl md:text-4xl text-red-600 mx-auto mb-2" />
-            <h2 className="text-2xl md:text-4xl font-extrabold text-red-900 tracking-wide mb-4">
-              OUR MISSION
-            </h2>
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              To deliver high-quality safety training that meets global
-              standards and supports a safer working world.
-            </p>
-          </section>
-
-          <section className="bg-white rounded-xl shadow-xl p-6 md:p-10 text-center">
-            <FaEye className="text-3xl md:text-4xl text-purple-600 mx-auto mb-2" />
-            <h2 className="text-2xl md:text-4xl font-extrabold text-purple-900 tracking-wide mb-4">
-              OUR VISION
-            </h2>
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              To be a center of excellence in safety education, recognized for
-              producing competent safety leaders.
-            </p>
-          </section>
-        </div>
-
-        {/* Right Images */}
-        <div className="space-y-4 hidden md:block">
-          <img
-            src="/one.jpg"
-            alt="Right 1"
-            className="w-full rounded-2xl shadow-md hover:scale-105 transition-transform"
-          />
-          <img
-            src="/five.jpeg"
-            alt="Right 2"
-            className="w-full rounded-2xl shadow-md hover:scale-105 transition-transform"
-          />
-        </div>
-      </div>
 
       {/* image row*/}
-      <section className="w-full py-16 bg-white">
+      {/* <section className="w-full py-16 bg-white">
         <h2 className="text-center text-3xl md:text-4xl font-bold text-black mb-10">
           LEARNING PARTNER
         </h2>
@@ -227,24 +230,36 @@ const Home = () => {
             className="w-full max-w-[250px] h-[150px] object-contain border rounded-lg shadow-md"
           />
         </div>
-      </section>
+      </section> */}
+
+
 
       {/* PAID COURSES SECTION */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="w-full mt-5 py-20 bg-green-800 rounded-t-2xl"
+        className="w-full py-20 bg-green-800 rounded-t-[3rem]"
       >
-        <motion.div variants={fadeUp} className="max-w-[80%] mx-auto text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
-            Courses We <span className="text-amber-300">Provide</span>
-          </h2>
-          <p className="mt-4 text-gray-100 max-w-xl mx-auto">
-            Our training programs empower individuals and teams with the
-            knowledge to ensure safety in every situation.
-          </p>
-        </motion.div>
+        
+
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[80%] mx-auto text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white">
+              Courses We <span className="text-amber-300">Provide</span>
+            </h2>
+            <p className="mt-3 text-gray-200 max-w-xl mx-auto">
+              Industry-recognized programs designed for real-world safety careers.
+            </p>
+            <p className="mt-2 text-sm text-green-200 tracking-wide">
+              ✔ Placement Oriented · ✔ Global Standards · ✔ Practical Training
+            </p>
+          </motion.div>
 
         {/* Course Cards */}
         <motion.div
@@ -305,10 +320,15 @@ const Home = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="w-full py-16 bg-gradient-to-t from-green-100 to-green-4"
+        className="w-full py-16 bg-gradient-to-b from-white via-green-100 to-white"
       >
-        <motion.h2 variants={fadeUp} className="text-center text-3xl md:text-4xl font-bold text-black mb-12">
-          FREE - <span className="text-green-600">COURSES</span>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center text-3xl md:text-4xl font-extrabold text-green-900 mb-14"
+        >
+          Free <span className="text-green-600">Skill Programs</span>
         </motion.h2>
 
         <div className="max-w-6xl mx-auto px-4 space-y-10">

@@ -1,143 +1,157 @@
-import { useState } from "react";
-import { FaYoutube } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import {
+  FaYoutube,
+  FaFacebook,
+  FaBars,
+  FaTimes,
+  FaWhatsapp,
+  FaPhoneAlt,
+} from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
-import { FaFacebook, FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
+const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "Courses", path: "/courses" },
+  { name: "Contact", path: "/contact" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  /* Scroll shadow */
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="w-full bg-green-800 shadow-lg">
-      <div className="sm:w-[90%] lg:w-[80%] mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo + Name */}
-        <Link to="/" className="flex items-center gap-3 cursor-pointer">
-          <div className="w-14 h-14 rounded-full overflow-hidden bg-white shadow-md">
-            <img
-              src="/logo.jpg"
-              alt="logo"
-              className="w-full h-full object-cover"
-            />
+    <header className="sticky top-0 z-50 w-full">
+      {/* TOP INFO BAR */}
+      <div className="w-full bg-gradient-to-r from-green-900 to-green-700 text-white text-sm">
+        <div className="max-w-[85%] mx-auto flex justify-between items-center py-2">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <FaPhoneAlt className="text-xs" />
+              <span className="font-medium">+91 93355 21687</span>
+            </div>
+
+            {/* WhatsApp CTA */}
+            <a
+              href="https://wa.me/919335521687"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-green-600 px-3 py-1 rounded-full text-xs font-semibold hover:bg-green-500 transition"
+            >
+              <FaWhatsapp />
+              WhatsApp
+            </a>
           </div>
-          <span className="text-2xl font-bold text-white">AIOSH</span>
-        </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">
-          {/* Contact Button */}
-          <Link
-            to="/"
-            className="relative text-white font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
-          >
-            Home
-          </Link>
-          <Link
-            to="/courses"
-            className="relative text-white font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
-          >
-            Courses
-          </Link>
-          <Link
-            to="/contact"
-            className="relative text-white font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
-          >
-            Contact Us
-          </Link>
-
-          {/* Social Links */}
-          {/* <div className="flex items-center gap-4 text-white text-xl">
-            <a
-              href="https://www.instagram.com/aim__institute0999?igsh=MTMwOWcyZmNjYmV0eg=="
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <RiInstagramFill
-                className="hover:text-pink-400 transition duration-200"
-                size={30}
-              />
-            </a>
-            <a
-              href="https://www.facebook.com/share/16eqri7A93/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <FaFacebook
-                className="hover:text-blue-500 transition duration-200"
-                size={28}
-              />
-            </a>
-            <a
-              href="https://youtube.com/@aiminstituteofsafetyandhealth?si=pkEm6AdNbEZfMst5"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube"
-            >
-              <FaYoutube
-                className="hover:text-red-500 transition duration-200"
-                size={32}
-              />
-            </a>
-          </div> */}
+          {/* Social Icons */}
+          <div className="flex items-center gap-4 text-lg">
+            <RiInstagramFill className="hover:text-pink-300 transition cursor-pointer" />
+            <FaFacebook className="hover:text-blue-300 transition cursor-pointer" />
+            <FaYoutube className="hover:text-red-300 transition cursor-pointer" />
+          </div>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-white text-3xl"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </button>
       </div>
 
-      {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-green-700 px-6 py-4 space-y-4">
-          <Link
-            to="/courses"
-            onClick={() => setIsOpen(false)}
-            className="block w-full text-center px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200"
-          >
-            Courses
-          </Link>
-          <Link
-            to="/contact"
-            onClick={() => setIsOpen(false)}
-            className="block w-full text-center px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200"
-          >
-            Contact Us
+      {/* MAIN NAVBAR */}
+      <nav
+        className={`w-full bg-white transition-shadow ${
+          scrolled ? "shadow-lg" : "shadow-sm"
+        }`}
+      >
+        <div className="max-w-[85%] mx-auto px-4 py-4 flex items-center justify-between">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full overflow-hidden border">
+              <img
+                src="/logo.jpg"
+                alt="AIOSH Logo"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-xl font-extrabold text-green-800 leading-tight">
+                AIOSH
+              </p>
+              <p className="text-xs text-gray-600 tracking-wide">
+                Safety & Health Institute
+              </p>
+            </div>
           </Link>
 
-          {/* <div className="flex justify-center gap-6 text-white text-2xl">
-            <a
-              href="https://www.instagram.com/aim__institute0999?igsh=MTMwOWcyZmNjYmV0eg=="
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <RiInstagramFill className="hover:text-pink-400 transition duration-200" />
-            </a>
-            <a
-              href="https://www.facebook.com/share/16eqri7A93/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <FaFacebook className="hover:text-blue-500 transition duration-200" />
-            </a>
-            <a
-              href="https://youtube.com/@aiminstituteofsafetyandhealth?si=pkEm6AdNbEZfMst5"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube"
-            >
-              <FaYoutube className="hover:text-red-500 transition duration-200" />
-            </a>
-          </div> */}
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8 relative">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+
+              return (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className="relative font-semibold text-gray-800"
+                >
+                  {link.name}
+
+                  {/* Animated underline */}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute left-0 -bottom-1 h-[3px] w-full bg-green-700 rounded-full"
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            className="md:hidden text-2xl text-green-800"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
-      )}
-    </nav>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="md:hidden bg-green-50 border-t px-6 py-4 space-y-4"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className={`block text-center py-2 rounded-md font-semibold ${
+                  location.pathname === link.path
+                    ? "bg-green-700 text-white"
+                    : "text-green-800 hover:bg-green-100"
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </nav>
+    </header>
   );
 };
 
