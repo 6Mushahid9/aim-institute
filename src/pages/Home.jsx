@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
+import Testimonials from "../components/Testimonials";
 import { motion } from "framer-motion";
 import { FaFireExtinguisher, FaGraduationCap, FaEye } from "react-icons/fa";
 import {
@@ -322,6 +323,7 @@ const Home = () => {
       </motion.section>
 
       <Gallery />
+      <Testimonials />
 
       <div className="w-full md:px-72">
         <img src="/hse.jpg" alt="HSE" />
