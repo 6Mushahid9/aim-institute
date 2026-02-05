@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const images = [
@@ -83,12 +84,12 @@ const Hero = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <a
-            href="/courses"
+          <Link
+            to="/courses"
             className="px-7 py-3 bg-green-600 hover:bg-green-700 text-white rounded-xl shadow-lg font-semibold transition"
           >
             Explore Courses
-          </a>
+          </Link>
 
           <a
             href="https://wa.me/919335521687"

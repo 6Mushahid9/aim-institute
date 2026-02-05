@@ -95,13 +95,12 @@ const CourseDetails = () => {
 
             {/* CTA Buttons */}
             <div className="mt-10 flex gap-4">
-              <a
-                href={course.link || "/contact"}
-                rel="noopener noreferrer"
+              <Link
+                to="/contact"
                 className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
               >
                 {course.fees === "FREE" ? "Start Learning" : "Enroll Now"}
-              </a>
+              </Link>
 
               <Link
                 to="/courses"
