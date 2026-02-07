@@ -3,7 +3,6 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Testimonials from "../components/Testimonials";
 import { motion } from "framer-motion";
-import { FaFireExtinguisher, FaGraduationCap, FaEye } from "react-icons/fa";
 import {
   FaShieldAlt,
   FaGlobeAsia,
@@ -13,6 +12,10 @@ import {
 import Gallery from "../components/gallery";
 import { Link } from "react-router-dom";
 import { coursesData, eLearningCourses } from "../data/coursesData";
+import { X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -29,11 +32,62 @@ const staggerParent = {
 };
 
 const Home = () => {
+  const [open, setOpen] = useState(false);
+
+
+  useEffect(() => {
+    const hasSeenBlogPopup = sessionStorage.getItem("blogPopupSeen");
+
+    if (!hasSeenBlogPopup) {
+      setOpen(true);
+      sessionStorage.setItem("blogPopupSeen", "true");
+    }
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
 
   return (
     <div>
       <Navbar />
       <Hero />
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* Close Button */}
+            <motion.button
+              onClick={handleClose}
+              className="absolute top-6 right-6 bg-white text-black rounded-full p-2 shadow hover:bg-gray-200 transition"
+              aria-label="Close"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.2 }}
+            >
+              <X size={22} />
+            </motion.button>
+
+            {/* Image */}
+            <motion.img
+              src="/blog.jpeg"
+              alt="Blog announcement"
+              className="max-h-[85vh] max-w-full rounded-xl shadow-2xl object-contain"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* intro */}
       <section className="w-full py-20 bg-gradient-to-r from-green-50 via-white to-green-50 overflow-hidden">
@@ -147,33 +201,6 @@ const Home = () => {
       </section>
 
 
-      {/* image row*/}
-      {/* <section className="w-full py-16 bg-white">
-        <h2 className="text-center text-3xl md:text-4xl font-bold text-black mb-10">
-          LEARNING PARTNER
-        </h2>
-
-        <div className="max-w-[90%] md:max-w-[80%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center">
-          <img
-            src="/iosh.jpg"
-            alt="iosh"
-            className="w-full max-w-[250px] h-[150px] object-contain border rounded-lg shadow-md"
-          />
-          <img
-            src="/nibosh.jpg"
-            alt="nibosh"
-            className="w-full max-w-[250px] h-[150px] object-contain border rounded-lg shadow-md"
-          />
-          <img
-            src="/iasp.jpg"
-            alt="iasp"
-            className="w-full max-w-[250px] h-[150px] object-contain border rounded-lg shadow-md"
-          />
-        </div>
-      </section> */}
-
-
-
       {/* PAID COURSES SECTION */}
       <motion.section
         initial="hidden"
@@ -181,25 +208,25 @@ const Home = () => {
         viewport={{ once: true }}
         className="w-full py-20 bg-green-800 rounded-t-[3rem]"
       >
-        
+
 
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-[80%] mx-auto text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-              Courses We <span className="text-amber-300">Provide</span>
-            </h2>
-            <p className="mt-3 text-gray-200 max-w-xl mx-auto">
-              Industry-recognized programs designed for real-world safety careers.
-            </p>
-            <p className="mt-2 text-sm text-green-200 tracking-wide">
-              ✔ Placement Oriented · ✔ Global Standards · ✔ Practical Training
-            </p>
-          </motion.div>
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-[80%] mx-auto text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white">
+            Courses We <span className="text-amber-300">Provide</span>
+          </h2>
+          <p className="mt-3 text-gray-200 max-w-xl mx-auto">
+            Industry-recognized programs designed for real-world safety careers.
+          </p>
+          <p className="mt-2 text-sm text-green-200 tracking-wide">
+            ✔ Placement Oriented · ✔ Global Standards · ✔ Practical Training
+          </p>
+        </motion.div>
 
         {/* Course Cards */}
         <motion.div
