@@ -15,6 +15,7 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "Courses", path: "/courses" },
   { name: "Contact", path: "/contact" },
+  { name: "Blog", path: "/blog" },
 ];
 
 const Navbar = () => {
@@ -50,7 +51,7 @@ const Navbar = () => {
               href="https://wa.me/919335521687"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-green-600 px-2.5 py-0.5 rounded-full font-semibold hover:bg-green-500 transition"
+              className="hidden md:flex items-center gap-1.5 bg-green-600 px-2.5 py-0.5 rounded-full font-semibold hover:bg-green-500 transition"
             >
               <FaWhatsapp className="text-[11px]" />
               WhatsApp
